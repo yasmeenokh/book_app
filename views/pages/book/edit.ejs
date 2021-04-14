@@ -1,0 +1,17 @@
+<body>
+    <section id='updateForm'>
+        <h3>Update Saved Books</h3>
+        <form action="/book/<%=book.id%>?_method=put" method="post">
+            <img class="img" src="<%= book.image_url %>" alt="<%= book.title %>">
+            <input type="text" name="title" value=' <%= book.title  %> '>
+            <textarea name="author"><%= book.author  %></textarea>
+            <input type="text" name="isbn" value="<%= book.isbn  %>">
+            <input type="text" name="description" value="<%= book.description  %>">
+            <button type="submit">Update</button>
+        </form>
+    </section>
+    <footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../app.js"></script>
+    </footer>
+</body>
