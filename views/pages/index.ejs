@@ -1,36 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../layout/head')  %> 
+<%- include('../layout/header')  %> 
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/modules.css">
-
-</head>
 
 <body>
-    <header>
-        <h2>Books App</h2>
-    </header>
-    <nav>
-        <ul>
+  <main>
+    <h2>Total saved books: <%=totalCount %> </h2>
 
-            <a href="/">
-                <li>Home</li>
-            </a>
-            <a href="searches/new">
-                <li>Search</li>
-            </a>
+<div class="cards">
+    <% books.forEach(element=>{ %>
+        <section class="container">
+            <img class="img" src="<%= element.image_url %>" alt="<%= element.title %>">
+          <h3>
+            <%= element.title %>
+          </h3>
+          <h4>
+            <%= element.author %>
+          </h4>
+          <button type="button"><a href="/book/<%=element.id%>">View Details</a> </button>
+        </section>
+        <% }); %>
+      </div>
 
-        </ul>
-    </nav>
+      </main>
 
-
-
+        <%- include('../layout/footer')  %> 
 </body>
 
 </html>

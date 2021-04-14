@@ -1,44 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/layout.css">
-    <link rel="stylesheet" href="/styles/modules.css">
+<%- include('../../layout/head') %>
+    <%- include('../../layout/header') %>
 
 
-</head>
+        <body>
+            <header>
+                <h1>Best Books!</h1>
+            </header>
+            <h2>Search Results</h2>
+            <main>
+                <div class="container">
+                    <div class="forEachCard">
 
-<body>
-    <header>
-        <h1>Best Books!</h1>
-    </header>
-    <h2>Search Results</h2>
-    <main>
-        <div class="container">
+                        <% booksArray.forEach(book=>{%>
+                            <div class="border">
 
-            <div class="forEach">
-                <% booksArray.forEach(book=>{%>
+                            <ul>
+                                <li>
+                                    <img src="<%=book.image%> " class="img">
+                                </li>
+                                <li>
+                                    <h3>
+                                        <%= book.title %>
+                                    </h3>
 
-                    <img src="<%=book.image%> " class="img">
-                    <h3>
-                        <%= book.title %>
-                    </h3>
-                    <h4>
-                        <%= book.author %>
-                    </h4>
-                    <p>
-                        <%= book.description%>
-                    </p>
-                    <% }) %>
-            </div>
-        </div>
-    </main>
-    <footer></footer>
-</body>
+                                </li>
+                                <li>
+                                    <h4>
+                                        <%= book.author %>
+                                    </h4>
+                                </li>
+                                <li>
+                                    <p>
+                                        <%= book.description%>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>ISBN : <%= book.isbn %>
+                                    </p>
+                                </li>
 
-</html>
+                                <!-- <a href="/">Select this Books</a> -->
+                                <li>
+                                    <form class="" action="/book" method="post">
+                                        <input type="hidden" name="image_url" value="<%= book.image%> " />
+                                        <input type="hidden" name="title" value="<%= book.title %> " />
+                                        <input type="hidden" name="author" value="<%= book.author %> " />
+                                        <input type="hidden" name="description" value="<%= book.description %> " />
+                                        <input type="hidden" name="isbn" value="<%= book.isbn %> " />
+                                        <button class="" type="submit">Select This Book</button>
+                                    </form>
+                                </li>
+                            </ul>
+                            </div>
+                            <% }) %>
+
+
+                        
+                    </div>
+
+                </div>
+            </main>
+            <%- include('../../layout/footer') %>
+        </body>
+
+        </html>
